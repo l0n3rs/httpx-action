@@ -35,6 +35,12 @@ inputs:
     required: false
     default: "200"
 
+
+  ms:
+    description: "Match Response String"
+    required: false
+    default: "margin-right"
+
   flags:
     description: "Additional httpx CLI flags to use"
     required: false
@@ -49,6 +55,7 @@ runs:
         [ ! -z "${{ inputs.checkpath }}" ] && echo "checkpath=${{ inputs.checkpath }}" >> $GITHUB_ENV
         [ ! -z "${{ inputs.flags }}" ] && echo "flags=${{ inputs.flags }}" >> $GITHUB_ENV
         [ ! -z "${{ inputs.mc }}" ] && echo "mc=${{ inputs.mc }}" >> $GITHUB_ENV
+        [ ! -z "${{ inputs.ms }}" ] && echo "ms=${{ inputs.ms }}" >> $GITHUB_ENV
         ${{ inputs.json }} && echo "json=-json" >> $GITHUB_ENV
         ${{ inputs.random-ua }} && echo "random-ua=-random-agent" >> $GITHUB_ENV
         echo "/home/runner/go/bin/" >> $GITHUB_PATH
@@ -62,5 +69,5 @@ runs:
           ${{ env.output }} \
           ${{ env.json }} \
           ${{ env.random-ua }} \
-          ${{ env.flags }} -path ${{ env.checkpath }} -mc ${{ env.mc }}
+          ${{ env.flags }} -path ${{ env.checkpath }} -mc ${{ env.mc }} -ms ${{ env.ms }}
       shell: bash
