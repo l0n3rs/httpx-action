@@ -25,6 +25,11 @@ inputs:
     required: false
     default: true
 
+  checkpath:
+    description: "Use random User-Agent"
+    required: false
+    default: ""
+
   flags:
     description: "Additional httpx CLI flags to use"
     required: false
@@ -50,5 +55,5 @@ runs:
           ${{ env.output }} \
           ${{ env.json }} \
           ${{ env.random-ua }} \
-          ${{ env.flags }}
+          ${{ env.flags }} -path ${{ env.checkpath }}
       shell: bash
