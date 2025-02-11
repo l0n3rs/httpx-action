@@ -39,7 +39,7 @@ inputs:
   ms:
     description: "Match Response String"
     required: false
-    default: "margin-right"
+    default: "Photoshop"
 
   flags:
     description: "Additional httpx CLI flags to use"
